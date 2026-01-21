@@ -147,6 +147,30 @@ header a:focus-visible {
   font-weight: 500;
 }
 
+/* Ajuste para o menu em telas pequenas */
+@media (max-width: 768px) {
+  header nav {
+    display: flex;
+    flex-direction: column; /* Coloca a logo em cima e os links embaixo */
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  header nav ul {
+    display: flex;
+    flex-wrap: wrap;       /* Se não couber, ele pula para a linha de baixo */
+    justify-content: center;
+    gap: 15px;             /* Espaço entre os links */
+    padding: 0;
+    list-style: none;
+  }
+
+  header nav ul li a {
+    font-size: 0.9rem;     /* Diminuir um pouco a fonte no mobile ajuda a caber */
+    white-space: nowrap;   /* Evita que o texto de um link quebre no meio */
+  }
+}
 /* ===================================================== HOME ====================================================== */
 
 body.home header {
@@ -162,6 +186,24 @@ body.home header a {
   color: var(--bg);
 }
 
+@media (max-width: 768px) {
+  body.home header {
+    /* 1. Faz o menu sumir ao rolar (em vez de ficar preso no topo) */
+    position: absolute; 
+    
+    /* 2. Mata a linha amarela/fundo que aparece entre os itens do menu */
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    border: none;
+  }
+
+  body.home header nav {
+    /* Garante que o container interno também não tenha fundo */
+    background: transparent;
+  }
+}
 
 /* ==-------------------------------------------------------------======= HERO ========-----------------------------------------------------------= */
 .hero{ position:relative; min-height:100vh; display:grid; place-items:center; text-align:center; overflow:hidden; }
@@ -553,11 +595,11 @@ body.home header a {
 
 /* ESTILO DOS BOTÕES (Prev, Next, Close) */
 .gallery-lightbox button {
-  position: absolute; /* Agora eles flutuam sobre o fundo */
+  position: absolute; /* flutuam sobre o fundo */
   background: var(--brand);
   color: #fff;
   border: none;
-  width: 50px;  /* Tamanho fixo para garantir que fiquem redondos */
+  width: 50px;  
   height: 50px;
   display: flex;
   align-items: center;
@@ -588,13 +630,12 @@ body.home header a {
   right: 15px;
 }
 
-/* CORREÇÃO PARA CELULAR (Mobile) */
+/* CORREÇÃO PARA CELULAR  */
 @media (max-width: 768px) {
   .gallery-lightbox img {
     max-width: 95%;
   }
 
-  /* No mobile, as setas ficam menores para não atrapalhar a visão */
   .gallery-lightbox button {
     width: 40px;
     height: 40px;
@@ -606,10 +647,8 @@ body.home header a {
   .lightbox-next { right: 10px; }
 }
 
-/* CORREÇÃO DO BOTÃO WHATSAPP (Se o texto estiver estranho) */
-/* Se a classe do seu botão de reserva for .btn-whatsapp */
 .btn-whatsapp {
-    white-space: nowrap !important; /* Impede o texto de quebrar e ficar "estranho" */
+    white-space: nowrap !important; 
     overflow: visible !important;
     display: inline-flex !important;
     align-items: center;
@@ -670,14 +709,14 @@ body.home header a {
 .intro-testo h2 {
   font-family: var(--font-title, "Raleway", sans-serif);
   color: var(--brand);
-  margin-bottom: 1rem;                    /* antes: 0.5rem */
+  margin-bottom: 1rem;                    
   line-height: 1.3;                       /* mais confortável */
 }
 
 .intro-testo p {
   color: var(--text);
-  line-height: 1.7;                       /* antes: 1.6 */
-  margin-bottom: 2rem;                    /* antes: 1.5rem */
+  line-height: 1.7;                       
+  margin-bottom: 2rem;                    
   max-width: 65ch;                        /* evita linhas muito longas */
 }
 
@@ -728,8 +767,6 @@ body.home header a {
 
 /* Título da seção */
 #reviews-title {
-  
-  
   color: var(--brand);
   text-align: left;
 }
@@ -917,11 +954,6 @@ body.page-contatti footer {
 }
 
 
-/* =========================================
-   HEADER – AMARELO INTEIRO NESTA PÁGINA
-   (altura da logo; permanece amarelo ao rolar)
-   ========================================= */
-
 :root { --header-bg: var(--sand, #f0e1c9); }  /* NOVO BLOCO: fallback caso a var não exista */
 
 /* NOVO BLOCO: base do header (mesma altura da logo) */
@@ -1012,6 +1044,13 @@ header a:focus{
   color: var(--brand);            /* reforça no hover */
 }
 
+@media (max-width: 768px) {
+  body.page-contatti #contatti {
+    /* Ajuste este valor (120px ou 150px) para ser 
+       um pouco maior que a altura total do seu header mobile */
+    padding-top: 140px; 
+  }
+}
 /* =====-----------------------------------------------------===== MAPA ====---------------------------------------------------------====== */
 .contatti-mappa {
   width: min(100% - 2rem, 860px);
@@ -1194,9 +1233,9 @@ footer ul {
 /* mantém espaçamento controlado para listas com classe footer-list */
 footer .footer-list {
   margin: .5rem 0 0 0;           /* mantém espaçamento vertical */
-  display: flex;                 /* NOVO BLOCO: deixa os itens mais limpos em coluna */
-  flex-direction: column;        /* NOVO BLOCO: garante que fiquem embaixo um do outro */
-  gap: .35rem;                   /* NOVO BLOCO: espaçamento entre os itens */
+  display: flex;                 /* deixa os itens mais limpos em coluna */
+  flex-direction: column;        /* garante que fiquem embaixo um do outro */
+  gap: .35rem;                   /*  espaçamento entre os itens */
 }
 
 /* cada item da lista */
@@ -1215,3 +1254,5 @@ footer .footer-list a:hover,
 footer .footer-list a:focus {
   color: var(--brand);           /* muda a cor da paleta */
 }
+
+

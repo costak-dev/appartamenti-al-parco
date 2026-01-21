@@ -13,12 +13,8 @@
   <header>
     <nav aria-label="Navigazione principale">
       <a href="index.html#home" class="logo" aria-label="Home — Appartamenti Al Parco">
-        <!-- use sua logo real -->
         <img src="logo-transparente.webp" alt="Logo Appartamenti Al Parco">
       </a>
-      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
-      ☰
-    </button>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="appartamenti.html">Appartamenti</a></li>
@@ -28,7 +24,7 @@
     </nav>
   </header>
 <main>
-  <!-- Seção Contatti reaproveitando o seu CSS -->
+  <!------------------------------------- Seção Contatti  ------------------------------------->
   <section id="contatti" aria-labelledby="contatti-title">
     <div class="container" style="padding-top: var(--space-5)">
 
@@ -46,9 +42,6 @@
         </address>
 
         <ul class="contatti-rapidi">
-        
-        
-          <!-- CORREÇÃO: link mailto com o mesmo endereço exibido -->
           <li>
             <a href="mailto:appartamentialparco@gmail.com">
              📧 Email: appartamentialparco@gmail.com
@@ -60,7 +53,6 @@
             </a>
           </li>
           <li>
-            <!-- CORREÇÃO: endereço consistente com o <address> -->
             <a href="https://maps.google.com/?q=Via+Nazionale+18,+38018+Molveno" target="_blank" rel="noopener noreferrer">
               📍 Apri su Google Maps
             </a>
@@ -68,7 +60,7 @@
         </ul>
       </div>
 
-      <!-- Formulário (mesmas classes que você já usa) -->
+      <!--------------------------------------------Formulario --------------------->
 <form 
   action="https://formspree.io/f/xbddyyzg" 
   method="POST"
@@ -79,14 +71,6 @@
     type="hidden" 
     name="_subject" 
     value="Nuovo messaggio dal sito - Appartamenti al Parco"
-  >
-
-  <!-- IMPORTANTISSIMO:
-       usa un URL assoluto per evitare errori se il sito è in una sottocartella -->
-  <input 
-    type="hidden" 
-    name="_next" 
-    value="https://SEU-DOMINIO/grazie.html"
   >
 
   <!-- anti-spam (honeypot ufficiale Formspree) -->
@@ -138,8 +122,6 @@
 
   <button type="submit">Invia messaggio</button>
 </form>
-
-
 
       <!-- Mappa -->
       <div class="contatti-mappa" style="margin-top: var(--space-3)">
