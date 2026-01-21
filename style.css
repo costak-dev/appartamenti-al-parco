@@ -1,0 +1,1217 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Raleway:wght@400;500&display=swap');
+/* ======================= Reset & Base ==================== */
+*,*::before,*::after{ box-sizing:border-box; }
+html,body{ height:100%; }
+img,picture,video,canvas,svg{ display:block; max-width:100%; }
+input,button,textarea,select{ font:inherit; }
+
+/* ========================= ROOT ==========================*/
+:root{
+  /* cores */
+  --bg: #f8ecda;
+  --text: #2e2320;
+  --muted: #6b4a3c;
+  --brand: #81412a;
+  --brand-700:#6d361f;
+  --accent:#fff6e8;
+  
+  /* Montserrat p/ títulos e Raleway p/ texto */
+  --font-title:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; 
+  --font-body:'Raleway', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;     
+
+  /* layout */
+  --container: 1140px;
+  --space-1:.5rem; --space-2:1rem; --space-3:1.5rem; --space-4:2rem; --space-5:3rem;
+  --radius:16px;
+  --shadow:0 10px 25px rgba(0,0,0,.08);
+  --header-h:72px;
+}
+/* ========= Base visuals ========= */
+/* ===================================================== GLOBAL BASE ==================================================== */
+body {
+  margin:0;
+  line-height:1.6;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ======================= TITLES GLOBAL ======================= */
+h1, h2, h3 {
+  font-family: var(--font-title);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 var(--space-3);
+  color: var(--brand);
+}
+
+/* HIERARQUIA CONSISTENTE E RESPONSIVA */
+h1 {
+  font-size: clamp(2.2rem, 4vw + 0.5rem, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Assinatura visual (exceto no hero) */
+h1:not(.hero-title)::after {
+  content: "";
+  display: block;
+  width: 4rem;
+  height: 4px;
+  background: var(--brand);
+  border-radius: 999px;
+  margin-top: .5rem;
+}
+
+h2 {
+  font-size: clamp(1.7rem, 3vw + 0.3rem, 2.4rem);
+  letter-spacing: -0.3px;
+}
+
+h3 {
+  font-size: clamp(1.3rem, 2vw + 0.1rem, 1.8rem);
+  letter-spacing: -0.1px;
+  color: var(--brand-700);
+}
+
+/* ===================================================== TEXTO ==================================================== */
+p {
+  margin: 0 0 var(--space-2);
+  font-size: 1.1em;
+}
+
+/* ===================================================== LAYOUT GLOBAL ==================================================== */
+
+/* Container responsivo */
+.container {
+  width: min(100% - 2rem, var(--container));
+  margin-inline: auto;
+}
+
+body.page-contatti #contatti {
+  padding-top: calc(var(--space-5) * 1.8);
+}
+body.page-contatti #contatti {
+  padding-top: calc(var(--space-5) * 1.8);
+}
+
+/* Espaçamento de seções */
+body:not(.home) section {
+  padding: calc(var(--space-5) * 1.8) 0;
+}
+
+body.page-servizi .container-servicos {
+  padding-top: calc(var(--space-5) * 1.8);
+}
+body.home section {
+  padding: var(--space-5) 0;
+}
+
+section, main { scroll-margin-top: var(--header-h); }
+
+/* Acessibilidade — sr-only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===================================================== HEADER ==================================================== */
+
+/* Links */
+header a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color .25s ease;
+}
+
+header a:hover,
+header a:focus-visible {
+  color: var(--brand-700);
+}
+
+/* Assinatura */
+.firma {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* ===================================================== HOME ====================================================== */
+
+body.home header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  background: rgba(20, 20, 20, 0.28);
+  backdrop-filter: saturate(140%) blur(1px);
+  -webkit-backdrop-filter: saturate(140%) blur(1px);
+}
+
+body.home header a {
+  color: var(--bg);
+}
+
+
+/* ==-------------------------------------------------------------======= HERO ========-----------------------------------------------------------= */
+.hero{ position:relative; min-height:100vh; display:grid; place-items:center; text-align:center; overflow:hidden; }
+.hero-slides{ position:absolute; inset:0; }
+.hero-slides img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.02);
+  transition: opacity 800ms ease, transform 800ms ease;
+}
+.hero-slides img.active{ opacity:1; transform:scale(1); }
+
+/* texto do hero */
+.hero-title{
+  position:relative; z-index:1; color:#fff; font-size:clamp(3rem, 5vw + .6rem, 4rem);
+  text-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+.hero-subtitle {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  margin-top: .5rem;
+  font-weight: 500;
+  font-size: clamp(2rem, 2.2vw + .7rem, 2.25rem);
+  opacity: .95;
+  text-align: center;
+  max-width: 70ch;         
+  margin-inline: auto;     
+}
+
+/* ====-----------------------------------------------===== “Chi siamo” minimal ======-------------------------------------=== */
+#chisiamo .container{
+  max-width: var(--container); 
+  text-align:center;
+  padding: 4rem 1rem;
+}
+#chisiamo p {
+  font-size: 1.8rem;
+  letter-spacing: 0.05em;          
+  line-height: 1.6;
+  font-weight: 400;
+  max-width: 70ch;                 
+  margin-inline: auto;
+}
+#chisiamo .firma {
+  margin-top: 1.5rem;
+  font-style: italic;
+  text-align: right;               
+  font-weight: 500;
+  letter-spacing: 0.03em;          
+}
+
+/* ===================================================== Tutto vicino a te (3 cards) =========================================== */
+#perchequi {
+  padding: 4rem 1rem;
+  background-color: #f0e6d8;
+}
+
+/* Título + subtítulo alinhados ao container */
+#perchequi-title,
+.pq-subtitle,
+#perchequi .pq-grid {
+  width: min(100% - 2rem, var(--container));
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+#perchequi-title {
+  text-align: left;
+  padding-left: .25rem;
+  margin-bottom: .5rem;
+  color: var(--brand);
+}
+
+.pq-subtitle {
+  text-align: left;
+  margin-bottom: 2.5rem;
+  opacity: .85;
+  font-size: 1.1rem;
+  
+}
+
+/* GRID responsive */
+#perchequi .pq-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  #perchequi .pq-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* CARDS (quadrados e maiores) */
+#perchequi .pq-card {
+  width: 100%;
+  height: clamp(260px, 32vw, 380px);
+  border-radius: 0;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform .3s ease;
+
+ 
+  margin: 0; /* zera o margin padrão do <figure> e alinha com o parágrafo */
+}
+
+#perchequi .pq-card:hover {
+  transform: scale(1.015);
+}
+
+#perchequi .pq-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============================
+   ANIMAÇÃO — BASE VISUAL
+============================ */
+
+/* Estado inicial - reduzido mas visível caso JS falhe */
+#perchequi .pq-item {
+  opacity: 1;
+  transform: none;
+}
+
+/* Estado inicial com reveal = só anima se o JS ativar */
+#perchequi .pq-item.reveal {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity .8s ease-out, transform .8s ease-out;
+}
+
+#perchequi .pq-item.reveal.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* MOBILE — anima vertical */
+@media (max-width: 767px) {
+  #perchequi .pq-item.reveal {
+    transform: translateY(40px);
+  }
+
+  #perchequi .pq-item.reveal.active {
+    transform: translateY(0);
+  }
+}
+
+#perchequi .pq-item p {
+  text-align: center;
+  margin-left: 0;
+  margin-top: 20px;
+  width: 100%;
+}
+
+#perchequi .pq-item {
+  align-items: flex-start;
+  text-align: left;
+}
+
+
+/* =====--------------------------------------------- Appartamenti (cards + details)------------------------------------------ */
+
+.page-appartamenti {
+  background: #fff; 
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+.page-appartamenti .container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+/* TÍTULO PRINCIPAL */
+#appartamenti-title {
+  font-family: var(--font-title);
+  color: var(--brand-700);
+  text-align: left;
+
+}
+
+/* SUBTÍTULOS DOS APARTAMENTOS */
+#appartamenti article > h2 {
+  font-family: var(--font-title);
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  color: var(--brand-700);
+  margin: 0 0 var(--space-2);
+}
+/* =======================================
+   CARD DO APARTAMENTO
+   ======================================= */
+#appartamenti article {
+  background: var(--accent);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space-3);
+  margin-bottom: var(--space-5);
+
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: var(--space-3);
+}
+
+/* MOBILE: tudo em coluna, imagem abaixo do título */
+#appartamenti article > figure {
+  margin: 0;
+  border-radius: calc(var(--radius) * 0.9);
+  overflow: hidden;
+}
+
+#appartamenti article > figure img {
+  width: 100%;
+  height: auto;
+  max-height: 360px;
+  object-fit: cover;
+  display: block;
+  transition: transform .3s ease-out;
+}
+
+#appartamenti article:hover > figure img {
+  transform: scale(1.03);
+}
+
+/* BLOCO DE TEXTO */
+.texto-info-ap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.texto-info-ap p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+  text-align: justify; 
+}
+
+/* LISTA DE FEATURES */
+.texto-info-ap ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: .35rem;
+}
+
+.texto-info-ap li {
+  position: relative;
+  padding-left: .9rem;
+  font-size: .95rem;
+}
+
+.texto-info-ap li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--brand);
+}
+
+/* BOTÃO "MOSTRAR MAIS FOTOS" */
+.btn-gallery {
+  align-self: flex-start;
+  margin-top: var(--space-1);
+
+  background: transparent;         /* sem preenchimento */
+  color: var(--brand);              /* texto e borda usam a cor da marca */
+  border: 2px solid var(--brand);   /* contorno destacado */
+  
+  padding: .65rem 1.3rem;
+  
+  
+  font-family: var(--font-title);
+  font-size: .95rem;
+  cursor: pointer;
+  
+  transition:
+    background .25s ease,
+    color .25s ease,
+    border-color .25s ease,
+    transform .15s ease;
+}
+
+/* hover: mantém o estilo, só reforça */
+.btn-gallery:hover {
+  background: var(--brand);
+  color: #fff;
+}
+
+
+.btn-gallery:active {
+  background: color-mix(in srgb, var(--brand) 85%, #000 12%);
+  border-color: color-mix(in srgb, var(--brand) 85%, #000 12%);
+}
+
+
+/* =======================================
+   GALERIA INTERNA (ESCONDIDA)
+   ======================================= */
+
+.gallery.galleria[hidden] {
+  display: none;
+}
+
+.gallery.galleria {
+  margin-top: var(--space-3);
+  display: grid;
+  gap: var(--space-2);
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.gallery.galleria figure {
+  margin: 0;
+  border-radius: calc(var(--radius) * 0.5);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.gallery.galleria img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+/* =======================================
+   FOOTER DO CARD (CTA WHATSAPP)
+   ======================================= */
+.btn-footer {
+  margin-top: var(--space-2);
+}
+
+.btn-footer a,
+.btn-footer a:visited {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+
+  background: var(--brand);
+  color: #fff;
+  padding: .8rem 1.8rem;
+  border-radius: 50px;
+  font-family: var(--font-title);
+  font-size: .95rem;
+  text-decoration: none;
+  transition: background .25s ease, transform .15s ease, box-shadow .15s ease;
+  box-shadow: var(--shadow);
+}
+
+.btn-footer a:hover,
+.btn-footer a:focus-visible {
+  background: var(--brand-700);
+  transform: translateY(-1px);
+}
+
+
+/* =======================================
+   LIGHTBOX GLOBAL
+   ======================================= */
+/* LIGHTBOX REFORMULADO */
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9); /* Escureci um pouco para destacar mais */
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* Removido o padding para não esmagar a imagem no mobile */
+  z-index: 999999 !important; /* Valor extremo para ganhar de qualquer botão de WhatsApp */
+}
+
+.gallery-lightbox.active {
+  display: flex;
+}
+
+.gallery-lightbox img {
+  max-width: 90%;
+  max-height: 80vh; /* Garante espaço para os botões embaixo se necessário */
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  object-fit: contain;
+  z-index: 10;
+}
+
+/* ESTILO DOS BOTÕES (Prev, Next, Close) */
+.gallery-lightbox button {
+  position: absolute; /* Agora eles flutuam sobre o fundo */
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  width: 50px;  /* Tamanho fixo para garantir que fiquem redondos */
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background .25s ease, transform 0.2s;
+  z-index: 20; /* Fica acima da imagem */
+}
+
+.gallery-lightbox button:hover {
+  background: var(--brand-700);
+  transform: scale(1.1);
+}
+
+/* POSICIONAMENTO ESPECÍFICO DOS BOTÕES */
+.lightbox-close {
+  top: 20px;
+  right: 20px;
+}
+
+.lightbox-prev {
+  left: 15px;
+}
+
+.lightbox-next {
+  right: 15px;
+}
+
+/* CORREÇÃO PARA CELULAR (Mobile) */
+@media (max-width: 768px) {
+  .gallery-lightbox img {
+    max-width: 95%;
+  }
+
+  /* No mobile, as setas ficam menores para não atrapalhar a visão */
+  .gallery-lightbox button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    background: rgba(var(--brand-rgb), 0.8); /* Opcional: leve transparência */
+  }
+
+  .lightbox-prev { left: 10px; }
+  .lightbox-next { right: 10px; }
+}
+
+/* CORREÇÃO DO BOTÃO WHATSAPP (Se o texto estiver estranho) */
+/* Se a classe do seu botão de reserva for .btn-whatsapp */
+.btn-whatsapp {
+    white-space: nowrap !important; /* Impede o texto de quebrar e ficar "estranho" */
+    overflow: visible !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: fit-content;
+}
+/* =======================================
+   DESKTOP: DOIS BLOCOS EQUILIBRADOS
+   ======================================= */
+@media (min-width: 900px) {
+  #appartamenti article {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.3fr);
+    column-gap: var(--space-4);
+    align-items: start;
+  }
+
+  #appartamenti article > h2 {
+    grid-column: 1 / 2;   /* título fica na coluna da esquerda */
+  }
+
+  .texto-info-ap {
+    grid-column: 1 / 2;   /* texto logo abaixo do título */
+  }
+
+#appartamenti article > figure {
+  grid-column: 2 / 3;
+  grid-row: 2 / 4;   /* agora começa junto da descrição */
+  align-self: start;
+}
+
+  .btn-footer {
+    grid-column: 1 / -1;  /* CTA centralizado embaixo */
+    text-align: center;
+  }
+
+  .gallery.galleria {
+    grid-column: 1 / -1;  /* galeria ocupa largura toda */
+  }
+}
+  
+
+/* ---------------- CONTAINER - APPARTAMENTI ----------------------------*/
+.intro-appartamenti {
+  display: grid;
+  align-items: center;
+  gap: 2rem;
+  margin-top: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+.intro-appartamenti img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+.intro-testo h2 {
+  font-family: var(--font-title, "Raleway", sans-serif);
+  color: var(--brand);
+  margin-bottom: 1rem;                    /* antes: 0.5rem */
+  line-height: 1.3;                       /* mais confortável */
+}
+
+.intro-testo p {
+  color: var(--text);
+  line-height: 1.7;                       /* antes: 1.6 */
+  margin-bottom: 2rem;                    /* antes: 1.5rem */
+  max-width: 65ch;                        /* evita linhas muito longas */
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;                       /* NOVO: separa do texto acima */
+  padding: 0.9rem 1.8rem;                 /* antes: 0.75rem 1.5rem */
+  background: transparent;
+  border: 2px solid var(--brand);
+  color: var(--brand);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.2s ease;                  /* suave e sem “apertar” */
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background: var(--brand);
+  color: #fff;
+  transform: translateY(-1px);            /* “levanta” 1px, não comprime */
+}
+
+
+/* Responsivo */
+@media (min-width: 900px) {
+  .intro-appartamenti {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* ======---------------------------------------------------------=== AVALIAÇOES ===---------------------------------------------------------------====== */
+#reviews {
+  padding: var(--space-5) 1.5rem;
+  background-color: var(--accent); /* ocupa 100% */
+}
+
+/* aplica container só no conteúdo */
+#reviews > * {
+  max-width: var(--container);
+  margin-inline: auto;
+}
+
+
+/* Título da seção */
+#reviews-title {
+  
+  
+  color: var(--brand);
+  text-align: left;
+}
+
+/* Grid */
+#reviews .reviews-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Desktop: 3 colunas */
+@media (min-width: 900px) {
+  #reviews .reviews-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Cards */
+#reviews .review-card {
+  background: #ffffff;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0e6d8;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 150px;
+}
+
+#reviews .review-text {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+#reviews .review-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+#reviews .review-name {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+#reviews .review-meta {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #7a6a5a;
+}
+
+/* ======---------------------------------------------------------=== ULTIMA FOTO ===---------------------------------------------------------------====== */
+
+section.closing-image{
+  height: 600px;
+  margin: 0;
+  padding: 0;
+  background: url("fotosHero/fotofinal.webp") center / cover no-repeat;
+}
+section.closing-image img{ display: none; }
+
+/* ======---------------------------------------------------------=== Contatti (form moderno) ===---------------------------------------------------------------====== */
+#contatti {
+  margin-bottom: 0;
+  padding-bottom: var(--space-4);
+  background-color:#f5f5f5;
+}
+
+body.page-contatti footer {
+  background: linear-gradient(to bottom, var(--accent), #f4eadc);
+  padding: var(--space-3) 0 var(--space-4);
+  text-align: center;
+  color: var(--brand-700);
+  font-size: .9rem;
+  border-top: 1px solid rgba(0,0,0,.08);
+} 
+
+/* Mantém o container central e limitado */
+#contatti .container {                       
+  width: min(100% - 2rem, 860px);           
+  margin-inline: auto; /* NOVO BLOCO: garante centralização do container */
+}
+
+#contatti h1 {
+  
+  text-align: left;
+}
+
+#contatti { --content: 720px; }              
+
+/* NOVO BLOCO: faz todos estes blocos seguirem a MESMA coluna central */
+#contatti :is(h1, p, .contatti-dati, form, .contatti-mappa) {
+  width: min(100%, var(--content));           
+  margin-inline: auto;                        
+}
+
+/* NOVO BLOCO: deixa os contatos visualmente alinhados (sem bullets e com espaçamento) */
+#contatti .contatti-dati {
+  display: grid;                            
+  gap: 0.5rem;                                
+  margin-bottom: 1rem;                        
+}
+
+#contatti .contatti-rapidi {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.25rem 0 0;
+  display: grid;
+  gap: 0.25rem;
+}
+#contatti .contatti-rapidi a:hover,
+#contatti .contatti-rapidi a:focus {
+  color: var(--brand);          /* cor da paleta ao passar o mouse */
+}
+
+/* Formulário (mantém seu estilo) */
+#contatti form {
+  display: grid;                       
+  gap: 1rem;                               
+  margin-top: var(--space-2);            
+  max-width: none;
+}
+
+#contatti label {
+  font-weight: 600;                      
+  color: var(--muted);                     
+  font-size: 0.95rem;                        
+}
+
+#contatti input,
+#contatti textarea {
+  border: 1px solid #e3d2c2;                 
+  background: #fff;                           
+  border-radius: 12px;                        
+  padding: 0.9rem 1rem;                      
+  outline: none;                              
+  transition: border-color 0.2s ease, box-shadow 0.2s ease; 
+  width: 100%;                                
+  box-sizing: border-box;                    
+}
+
+#contatti input:focus,
+#contatti textarea:focus {
+  border-color: var(--brand);                
+  box-shadow: 0 0 0 4px rgba(129, 65, 42, 0.12); 
+}
+
+#contatti textarea {
+  margin-top: 0.5rem;                         
+  height: 120px;                              
+  resize: vertical;                           
+}
+
+#contatti .form-note {                        
+  font-size: 0.9rem;                          
+  color: var(--muted);                       
+  line-height: 1.4;                          
+  margin-top: -0.25rem;                       
+}
+
+#contatti button {
+  border: 2px solid var(--brand);   /* contorno da marca */
+  background: transparent;           /* sem preenchimento */
+  color: var(--brand);               /* texto na cor da marca */
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  padding: 0.7rem 1.4rem;
+  cursor: pointer;
+  justify-self: start;
+  margin-top: 0.5rem;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+#contatti button:hover,
+#contatti button:focus-visible {
+  background: var(--brand);          /* só muda cor */
+  color: #fff;
+  border-color: var(--brand);
+}
+
+
+/* =========================================
+   HEADER – AMARELO INTEIRO NESTA PÁGINA
+   (altura da logo; permanece amarelo ao rolar)
+   ========================================= */
+
+:root { --header-bg: var(--sand, #f0e1c9); }  /* NOVO BLOCO: fallback caso a var não exista */
+
+/* NOVO BLOCO: base do header (mesma altura da logo) */
+body.page-contatti header {
+  position: fixed;                            /* mantém como no home */
+  inset: 0 0 auto 0;                          /* ocupa a faixa superior */
+  z-index: 1000;                              /* acima do conteúdo */
+  min-height: var(--header-h);                /* altura da logo (que você já usa) */
+  background: var(--header-bg);               /* amarelo sólido nesta página */
+  backdrop-filter: none;                      /* sem blur */
+  -webkit-backdrop-filter: none;              /* sem blur (Safari) */
+  box-shadow: none;                           /* sem sombra */
+}
+
+/* NOVO BLOCO: ao rolar, continua amarelo (sem trocar de cor) */
+body.page-contatti header.is-scrolled {
+  background: var(--header-bg);               /* mantém o amarelo */
+  backdrop-filter: none;                      /* sem blur */
+  -webkit-backdrop-filter: none;              /* sem blur (Safari) */
+  box-shadow: none;                           /* sem sombra */
+}
+
+/* Mantém sua estrutura interna do header (do jeito que já estava) */
+header nav{
+  width: min(100% - 2rem, var(--container));  
+  margin-inline: auto;                        
+  display: flex;                              
+  align-items: center;                        
+  justify-content: space-between;             
+  gap: var(--space-3);                        
+  min-height: var(--header-h);                
+}
+header .logo{
+  height: var(--header-h);                    
+  width: clamp(140px, 18vw, 280px);          
+  display:flex;                           
+  align-items:center;                        
+}
+header .logo img {
+  display: block;                           
+  width: 100%;                              
+  height: 100%;                              
+  object-fit: contain;                       
+}
+header ul{
+  list-style: none;                           
+  display: flex;                             
+  gap: var(--space-3);                       
+  margin: 0;                                  
+  padding: 0;                               
+}
+
+/* NOVO BLOCO: contraste dos links nesta página (amarelo claro atrás) */
+body.page-contatti header a {
+  color: var(--text);                         /* links escuros para boa leitura */
+}
+
+/* Estilos de link padrão (mantidos) */
+header a{
+  text-decoration: none;                     
+  font-weight: 600;                         
+  letter-spacing: .2px;                     
+  transition: color .3s ease, opacity .2s ease, text-decoration-color .2s ease; 
+}
+header a:hover,
+header a:focus{
+  opacity: .9;                               
+  text-underline-offset: 2px;                
+}
+
+#contatti a {
+  color: var(--text);             /* usa o mesmo tom padrão do texto (como no footer) */
+  text-decoration: none;          /* remove o sublinhado */
+  transition: color 0.25s ease;   /* transição suave na cor */
+}
+
+/* NOVO BLOCO: cor no hover (igual ao efeito do footer) */
+#contatti a:hover,
+#contatti a:focus {
+  color: var(--brand);            /* muda para a cor principal da paleta ao passar o mouse */
+  text-decoration: none;          /* mantém sem sublinhado */
+}
+#contatti .form-note a {
+  color: var(--brand-700);        /* tom levemente diferente, se quiser distinguir */
+  text-decoration: none;
+}
+#contatti .form-note a:hover {
+  color: var(--brand);            /* reforça no hover */
+}
+
+/* =====-----------------------------------------------------===== MAPA ====---------------------------------------------------------====== */
+.contatti-mappa {
+  width: min(100% - 2rem, 860px);
+  margin: clamp(1.25rem, 2.5vw, 2rem) auto var(--space-5);
+  border: 1px solid #e3d2c2;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(129,65,42,.08);
+}
+
+.contatti-mappa .gmap{
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;      /* responsivo */
+  min-height: 320px;         /* garante altura confortável */
+  border: 0;
+}
+
+/* ======================================================================== SERVIZI ================================================== */
+.container-servicos{
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+}
+
+
+body.page-servizi {
+  background-color: #f5f5f5;
+}
+body.page-servizi header {
+  background: var(--header-bg);
+}
+
+/* CONTAINER PRINCIPAL */
+.container-servicos {
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.container-servicos h1 {
+  letter-spacing: -0.5px;
+  text-align: left;
+}
+
+/* GRID DOS SERVIÇOS */
+.servicos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: clamp(2rem, 3vw, 2.5rem);
+  padding: clamp(2.5rem, 5vw, 3.5rem);
+  background: #fff;
+  border-radius: 28px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+
+/* CARDS */
+.servico-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* FOTOS */
+.servico-card img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 20px;             /* toque moderno */
+  transition: transform .4s ease,
+              filter .4s ease;
+}
+.servico-card img:hover {
+  transform: scale(1.02);
+  filter: brightness(.92);
+}
+
+/* TÍTULOS */
+.servico-card h2 {
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  margin: .5rem 0 0;
+  letter-spacing: -0.3px;
+  color: var(--brand);
+  line-height: 1.2;
+}
+
+/* TEXTO */
+.servico-card p {
+  margin: 0;
+  line-height: 1.7;
+  max-width: 60ch;                 /* limite de leitura elegante */
+  color: var(--text);
+  text-align: justify; 
+}
+
+/* MOBILE */
+@media (max-width: 780px) {
+  .servicos-grid {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
+  }
+
+  .servico-card img {
+    height: 240px;
+  }
+
+ 
+  .container-servicos h1 {
+    letter-spacing: 0;
+  }
+}
+
+/* ======================================================================== FOOTER ================================================== */
+
+footer {
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  padding: 2rem 4rem;
+  border-top: 1px solid #e3d2c2;
+  background: linear-gradient(180deg, #fff 0%, #faf5f1 100%);
+  color: var(--muted);
+}
+
+footer p {
+  margin: 0;
+  text-align: center;
+  font-size: .95rem;
+  line-height: 1.6;
+}
+
+footer h3 {
+  font-size: clamp(1.3rem, 1.1vw + 1rem, 1.8rem);
+  line-height: 1.2;
+  margin: 0 0 .5rem 0;
+  text-align: left;
+}
+
+/* -------------------------------
+   BLOCO FINAL DO FOOTER
+   ------------------------------- */
+.pfooter-end {
+  text-align: left;
+  margin: 0;
+  align-self: flex-start;
+  font-size: clamp(1.05rem, 0.6vw + .9rem, 1.25rem);
+  line-height: 1.7;
+}
+
+/* -------------------------------
+   LINKS DO FOOTER
+   ------------------------------- */
+footer a {
+  color: inherit;                /* herda cor natural do texto */
+  text-decoration: none;         /* remove sublinhado */
+  text-underline-offset: 2px;    /* reserva espaço, caso use underline depois */
+  transition: color 0.3s ease;
+}
+footer a:hover,
+footer a:focus {
+  text-decoration: none;         /* sem sublinhado */
+  color: var(--brand);           /* muda para a cor principal */
+  opacity: 1;
+}
+footer a:focus-visible {
+  outline: 2px solid var(--brand);  /* acessível ao teclado */
+  outline-offset: 2px;
+}
+
+/* -------------------------------
+   LISTAS DO FOOTER (CORREÇÃO DEFINITIVA)
+   ------------------------------- */
+
+footer ul {
+  list-style: none;              
+  padding-left: 0;               
+  margin-left: 0;                
+}
+
+/* mantém espaçamento controlado para listas com classe footer-list */
+footer .footer-list {
+  margin: .5rem 0 0 0;           /* mantém espaçamento vertical */
+  display: flex;                 /* NOVO BLOCO: deixa os itens mais limpos em coluna */
+  flex-direction: column;        /* NOVO BLOCO: garante que fiquem embaixo um do outro */
+  gap: .35rem;                   /* NOVO BLOCO: espaçamento entre os itens */
+}
+
+/* cada item da lista */
+footer .footer-list li {
+  margin: 0;                     /* remove espaçamento redundante */
+}
+
+/* os links dentro da lista */
+footer .footer-list a {
+  display: inline;               /* mantém inline, como antes */
+  color: inherit;                /* mesma cor do texto */
+  text-decoration: none;         /* sem sublinhado */
+  transition: color 0.3s ease;
+}
+footer .footer-list a:hover,
+footer .footer-list a:focus {
+  color: var(--brand);           /* muda a cor da paleta */
+}

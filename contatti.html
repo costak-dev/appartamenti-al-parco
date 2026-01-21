@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contatti Appartamenti al Parco</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-contatti">
+
+  <!-- Header igual ao das outras páginas -->
+  <header>
+    <nav aria-label="Navigazione principale">
+      <a href="index.html#home" class="logo" aria-label="Home — Appartamenti Al Parco">
+        <!-- use sua logo real -->
+        <img src="logo-transparente.webp" alt="Logo Appartamenti Al Parco">
+      </a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="appartamenti.html">Appartamenti</a></li>
+        <li><a href="eventi.html">Servizi</a></li>
+        <li><a href="contatti.html" class="current">Contatti</a></li>
+      </ul>
+    </nav>
+  </header>
+<main>
+  <!-- Seção Contatti reaproveitando o seu CSS -->
+  <section id="contatti" aria-labelledby="contatti-title">
+    <div class="container" style="padding-top: var(--space-5)">
+
+      <h1 id="contatti-title">Contatti:</h1>
+      <p>
+        Hai domande o desideri verificare la disponibilità?<br>
+        Scrivici: rispondiamo velocemente su WhatsApp o e-mail.
+      </p>
+
+      <!-- Bloco com dados (endereço + links rápidos) -->
+      <div class="contatti-dati" style="margin-top: var(--space-2)">
+        <address>
+          <strong>Appartamenti al Parco</strong><br>
+          Via Nazionale 18, 38018 Molveno (TN), Italia
+        </address>
+
+        <ul class="contatti-rapidi">
+        
+        
+          <!-- CORREÇÃO: link mailto com o mesmo endereço exibido -->
+          <li>
+            <a href="mailto:appartamentialparco@gmail.com">
+             📧 Email: appartamentialparco@gmail.com
+            </a>
+          </li>
+          <li>
+            <a href="https://wa.me/message/INJIU4KWZ7DVH1" target="_blank" rel="noopener noreferrer" aria-label="Apri chat su WhatsApp al numero +39 353 4915147">
+              📞 +39 353 4915147 (WhatsApp)
+            </a>
+          </li>
+          <li>
+            <!-- CORREÇÃO: endereço consistente com o <address> -->
+            <a href="https://maps.google.com/?q=Via+Nazionale+18,+38018+Molveno" target="_blank" rel="noopener noreferrer">
+              📍 Apri su Google Maps
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Formulário (mesmas classes que você já usa) -->
+<form 
+  action="https://formspree.io/f/xbddyyzg" 
+  method="POST"
+  class="contact-form"
+>
+  <!-- extras úteis -->
+  <input 
+    type="hidden" 
+    name="_subject" 
+    value="Nuovo messaggio dal sito - Appartamenti al Parco"
+  >
+
+  <!-- IMPORTANTISSIMO:
+       usa un URL assoluto per evitare errori se il sito è in una sottocartella -->
+  <input 
+    type="hidden" 
+    name="_next" 
+    value="https://SEU-DOMINIO/grazie.html"
+  >
+
+  <!-- anti-spam (honeypot ufficiale Formspree) -->
+  <input 
+    type="text" 
+    name="_gotcha" 
+    style="display:none" 
+    tabindex="-1" 
+    autocomplete="off"
+  >
+
+  <div>
+    <label for="nome">Nome:</label>
+    <input 
+      type="text" 
+      id="nome" 
+      name="nome" 
+      autocomplete="name"
+      required
+    >
+  </div>
+
+  <div>
+    <label for="email">E-mail:</label>
+    <input 
+      type="email" 
+      id="email" 
+      name="email" 
+      autocomplete="email"
+      required
+    >
+  </div>
+
+  <div>
+    <label for="messaggio">Messaggio:</label>
+    <textarea 
+      id="messaggio" 
+      name="messaggio" 
+      rows="6"
+      required
+    ></textarea>
+  </div>
+
+  <p class="form-note">
+    Inviando il messaggio accetti che i dati siano usati per rispondere alla tua richiesta.
+    Leggi la nostra 
+    <a href="/privacy" target="_blank" rel="noopener noreferrer">Informativa sulla Privacy</a>.
+  </p>
+
+  <button type="submit">Invia messaggio</button>
+</form>
+
+
+
+      <!-- Mappa -->
+      <div class="contatti-mappa" style="margin-top: var(--space-3)">
+        <iframe
+          class="gmap"
+          src="https://www.google.com/maps?q=Via+Nazionale+18,+38018+Molveno&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          aria-label="Mappa posizione Appartamenti al Parco"></iframe>
+      </div>
+
+    </div>
+  </section>
+</main>
+  <footer aria-label="Site footer">
+  <p>© 2026 Appartamenti Al Parco</p>
+</footer>
+</body>
+</html>
