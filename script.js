@@ -145,3 +145,12 @@ if (lightbox) {
         pqItems.forEach(el => observer.observe(el));
     }
 });
+
+//--- MENU SANDUICHE ---
+const btn = document.querySelector(".nav-toggle");
+const menu = document.querySelector("nav ul");
+
+btn.addEventListener("click", () => {
+  menu.classList.toggle("open");
+  btn.setAttribute("aria-expanded", menu.classList.contains("open"));
+});
