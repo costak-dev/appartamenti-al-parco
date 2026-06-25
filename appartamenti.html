@@ -1,195 +1,187 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Appartamenti - Appartamenti al Parco</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nome da Página — Appartamenti Al Parco</title>
+    <link rel="stylesheet" href="css/global.css">
 </head>
 <body>
-  <header>
-    <nav aria-label="Navigazione principale">
-      <a href="index.html#home" class="logo" aria-label="Home — Appartamenti al Parco">
-        <img src="logo-transparente.webp" alt="Logo Appartamenti al Parco">
-      </a>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="appartamenti.html" aria-current="page">Appartamenti</a></li>
-        <li><a href="eventi.html">Servizi</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <nav aria-label="Navigazione principale">
+            <a href="index.html" class="logo">
+                <img src="img/logo-transparente.webp" alt="Logo">
+            </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="appartamenti.html">Appartamenti</a></li>
+                <li><a href="servizi.html">Servizi</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main id="contenuto" tabindex="-1" class="page-appartamenti">
+   <main id="contenuto" tabindex="-1" class="page-appartamenti">
   <section id="appartamenti" aria-labelledby="appartamenti-title">
     <div class="container">
       <h1 id="appartamenti-title">I nostri appartamenti</h1>
 
-      <!-- ==-----------------------------------------=== Appartamento Lago ==-------------------------------------------------------=== -->
-      <article aria-labelledby="apt-lago-title">
-        <h2 id="apt-lago-title">Appartamento Lago</h2>
+      <!-- ==================== Appartamento Lago ==================== -->
+      <article class="apt-card" aria-labelledby="apt-lago-title">
+        <div class="apt-card-content">
+          <div class="apt-text-side">
+            <h2 id="apt-lago-title">Appartamento Lago</h2>
+            <p>Accogliente appartamento al primo piano, ideale per famiglie o piccoli gruppi. Dispone di cucina-soggiorno con divano letto, camera matrimoniale, camera doppia, bagno e balcone panoramico con vista sul giardino e sul lago. Ideale per 4 ospiti, fino a 6 posti letto disponibili.</p>
+            
+            <ul class="apt-features">
+              <li>Parcheggio</li>
+              <li>Giardino</li>
+              <li>TV • Wi-Fi</li>
+              <li>Riscaldamento</li>
+              <li>Lavastoviglie • Lavatrice</li>
+              <li>Bollitore • Forno</li>
+              <li>Frigorifero • Freezer</li>
+              <li>Animali di piccola taglia benvenuti (su richiesta)</li>
+            </ul>
 
-        <figure>
-          <img src="fotosApartamentoLago/ap-lago-adorno.jpg" alt="Entrada do Appartamento Lago">
-        </figure>
+            <button class="btn-gallery" type="button" aria-expanded="false" aria-controls="galleria-lago">
+              Mostra più foto
+            </button>
+          </div>
 
-        <div class="texto-info-ap" role="group" aria-labelledby="apt-lago-info-heading">
-          <p>Accogliente appartamento al primo piano, ideale per famiglie o piccoli gruppi.
-Dispone di cucina-soggiorno con divano letto, camera matrimoniale, camera doppia, bagno e balcone panoramico con vista sul giardino e sul lago.
-Ideale per 4 ospiti, fino a 6 posti letto disponibili.
-</p>
-          <ul>
-            <li>Parcheggio</li>
-            <li>Giardino</li>
-            <li>TV • Wi-Fi </li>
-            <li>Riscaldamento</li>
-            <li>Lavastoviglie • Lavatrice</li>
-            <li>Bollitore • Forno</li>
-            <li>Frigorifero • Freezer </li>
-            <li>Animali di piccola taglia benvenuti (su richiesta)</li>
-          </ul>
-
-          <button
-            class="btn-gallery"
-            type="button"
-            aria-expanded="false"
-            aria-controls="galleria-lago">Mostrare più foto</button>
+          <div class="apt-image-side">
+            <figure>
+              <img src="img/ap-lago-adorno.jpg" alt="Entrada do Appartamento Lago">
+            </figure>
+          </div>
         </div>
 
-        <section
-          class="gallery galleria"
-          id="galleria-lago"
-          aria-label="Galeria de fotos do Appartamento Lago"
-          hidden>
-          
-          <figure>
-            <img src="fotosApartamentoLago/ap-lago-divisao.jpg"
-                 alt="Zona giorno dell'Appartamento Lago con cucina attrezzata">
-          </figure>
-          <figure>
-            <img src="fotosApartamentoLago/ap-lago-sala.jpg"
-                 alt="Zona giorno dell'Appartamento Lago con cucina attrezzata">
-          </figure>
-          <figure>
-            <img src="fotosApartamentoLago/ap-lago-sala1.jpg"
-                 alt="Zona giorno dell'Appartamento Lago con cucina attrezzata">
-          </figure>
-          <figure>
-            <img src="fotosApartamentoLago/ap-lago-cameraBambini.jpg"
-                 alt="Camera da letto con due letti singoli">
-          </figure>
-          <figure>
-            <img src="fotosApartamentoLago/ap-lago-cameraBambini1.jpg"
-                 alt="Camera da letto con due letti singoli">
-          </figure>
-          <figure>
-            <img src="fotosApartamentoLago/ap-lago-cameraBambini2.jpg"
-                 alt="Camera da letto con due letti singoli">
-          </figure>
-          <figure>
-            <img src="fotosApartamentoLago/ap-lago-adorno.jpg"
-                 alt="Dettaglio decorativo floreale nell'appartamento">
-          </figure>
-          <figure>
-            <img src="fotosApartamentoLago/ap-lago-cameraMatrimoniale1.jpg"
-                 alt="Camera matrimoniale nell'Appartamento Lago">
-          </figure>
-          <figure>
-            <img src="fotosApartamentoLago/ap-lago-cameraMatriomaniale.jpg"
-                 alt="Camera matrimoniale nell'Appartamento Lago">
-          </figure>
-          <figure>
-            <img src="fotosApartamentoLago/ap-lago-bagno.jpg"
-                 alt="Bagno con doccia nell'Appartamento Lago">
-          </figure>
+        <!-- Galeria Escondida (Lightbox) -->
+        <section class="gallery galleria" id="galleria-lago" aria-label="Galeria di foto appartamento Lago" hidden>
+          <figure><img src="img/ap-lago-divisao.jpg" alt="Zona giorno dell'Appartamento Lago con cucina attrezzata"></figure>
+          <figure><img src="img/ap-lago-entrada.jpg" alt="Entrata del appartamento"></figure>
+          <figure><img src="img/ap-lago-sala.jpg" alt="Zona giorno dell'Appartamento Lago con cucina attrezzata"></figure>
+          <figure><img src="img/ap-lago-sala1.jpg" alt="cucina-soggiorno"></figure>
+          <figure><img src="img/ap-lago-sala2.png" alt="cucina-soggiorno"></figure>
+          <figure><img src="img/ap-lago-cameraBambini.jpg" alt="Camera da letto con due letti singoli"></figure>
+          <figure><img src="img/ap-lago-cameraBambini1.jpg" alt="Camera da letto con due letti singoli"></figure>
+          <figure><img src="img/ap-lago-cameraBambini2.jpg" alt="Camera da letto con due letti singoli"></figure>
+          <figure><img src="img/ap-lago-cameraMatrimoniale1.jpg" alt="Camera matrimoniale nell'Appartamento Lago"></figure>
+          <figure><img src="img/ap-lago-cameraMatriomaniale.jpg" alt="Camera matrimoniale nell'Appartamento Lago"></figure>
+          <figure><img src="img/ap-lago-bagno.jpg" alt="Bagno con doccia nell'Appartamento Lago"></figure>
         </section>
-
-        <footer class="btn-footer" aria-label="Ação rápida do Appartamento Lago">
-          <a href="https://wa.me/message/INJIU4KWZ7DVH1" target="_blank" rel="noopener noreferrer">Prenota ora tramite WhatsApp</a>
-        </footer>
       </article>
 
-      <!-- ===--------------------------------------------------- Appartamento Dolomiti-------------------------------------------------== -->
-      <article aria-labelledby="apt-dolomiti-title">
-        <h2 id="apt-dolomiti-title">Appartamento Dolomiti</h2>
+      <!-- ==================== Appartamento Dolomiti ==================== -->
+      <article class="apt-card" aria-labelledby="apt-dolomiti-title">
+        <div class="apt-card-content">
+          <div class="apt-text-side">
+            <h2 id="apt-dolomiti-title">Appartamento Dolomiti</h2>
+            <p>Accogliente appartamento al primo piano, ideale per famiglie o piccoli gruppi. Dispone di cucina-soggiorno con divano letto, camera matrimoniale, camera doppia, bagno e balcone panoramico con vista sulle Dolomiti di Brenta. Ideale per 4 ospiti, fino a 6 posti letto disponibili.</p>
+            
+            <ul class="apt-features">
+              <li>Parcheggio</li>
+              <li>Giardino</li>
+              <li>TV • Wi-Fi</li>
+              <li>Riscaldamento</li>
+              <li>Lavastoviglie • Lavatrice</li>
+              <li>Bollitore • Forno</li>
+              <li>Frigorifero • Freezer</li>
+              <li>Animali di piccola taglia benvenuti (su richiesta)</li>
+            </ul>
 
-        <figure>
-          <img src="fotosApartamentoDolomiti/cuoredolomiti.webp" alt="Detalhe decorativo em forma de coração">
-        </figure>
+            <button class="btn-gallery" type="button" aria-expanded="false" aria-controls="galleria-dolomiti">
+              Mostra più foto
+            </button>
+          </div>
 
-        <div class="texto-info-ap" role="group" aria-labelledby="apt-dolo-info-heading">
-          <p>Accogliente appartamento al primo piano, ideale per famiglie o piccoli gruppi.
-Dispone di cucina-soggiorno con divano letto, camera matrimoniale, camera doppia, bagno e balcone panoramico con vista sulle Dolomiti di Brenta.
-Ideale per 4 ospiti, fino a 6 posti letto disponibili.
-</p>
-          <ul>
-            <li>Parcheggio</li>
-            <li>Giardino</li>
-            <li>TV • Wi-Fi </li>
-            <li>Riscaldamento</li>
-            <li>Lavastoviglie • Lavatrice</li>
-            <li>Bollitore • Forno</li>
-            <li>Frigorifero • Freezer </li>
-            <li>Animali di piccola taglia benvenuti (su richiesta)</li>
-          </ul>
-          <button
-            class="btn-gallery"
-            type="button"
-            aria-expanded="false"
-            aria-controls="galleria-dolomiti">Mostrare più foto</button>
+          <div class="apt-image-side">
+            <figure>
+              <img src="img/dolomiti.webp" alt="Detalhe decorativo em forma de coração">
+            </figure>
+          </div>
         </div>
 
-        <section
-          class="gallery galleria"
-          id="galleria-dolomiti"
-          aria-label="Galeria de fotos do Appartamento Dolomiti"
-          hidden>
-          
-          <figure>
-            <img src="fotosApartamentoDolomiti/dolomiticamerabambini.webp" alt="camera da letto con due letti">
-          </figure>
-          <figure>
-            <img src="fotosApartamentoDolomiti/ap-dolomiti-cameraBambini1.jpg" alt="camera da letto con due letti">
-          </figure>
-          <figure>
-            <img src="fotosApartamentoDolomiti/ap-dolomiti-cameraMatrimoniale.jpg" alt="camera da letto matrimoniale">
-          </figure>
-          <figure>
-            <img src="fotosApartamentoDolomiti/ap-dolomiti-cameraMatrimoniale1.jpg" alt="camera da letto matrimoniale">
-          </figure>
-          <figure>
-            <img src="fotosApartamentoDolomiti/ap-dolomiti-cameraMatrimoniale2.jpg" alt="camera da letto matrimoniale">
-          </figure>
-          <figure>
-            <img src="fotosApartamentoDolomiti/dolomitisala.webp" alt="Zona giorno dell'Appartamento Dolomiti con cucina attrezzata">
-          </figure>
-          <figure>
-            <img src="fotosApartamentoDolomiti/adornodolomiti.webp" alt="adorno in cucina">
-          </figure>
-          <figure>
-            <img src="fotosApartamentoDolomiti/ap-dolomiti-bagno.jpg" alt="Bagno con doccia">
-          </figure>
+        <!-- Galeria Escondida (Lightbox) -->
+        <section class="gallery galleria" id="galleria-dolomiti" aria-label="Galeria di foto Appartamento Dolomiti" hidden>
+    
+          <figure><img src="img/ap-dolomiti-cameraBambini1.jpg" alt="camera da letto con due letti"></figure>
+          <figure><img src="img/ap-lago-cameraBambini.jpg" alt="camera da letto con due letti"></figure>
+          <figure><img src="img/ap-dolomiti-cameraMatrimoniale1.jpg" alt="camera da letto matrimoniale"></figure>
+          <figure><img src="img/ap-dolomiti-cameraMatrimoniale.jpg" alt="camera da letto matrimoniale"></figure>
+          <figure><img src="img/ap-dolomiti-cameraMatrimoniale2.jpg" alt="camera da letto matrimoniale"></figure>
+          <figure><img src="img/dolomitisala.webp" alt="Zona giorno dell'Appartamento Dolomiti con cucina attrezzata"></figure>
+          <figure><img src="img/adornodolomiti.webp" alt="adorno in cucina"></figure>
+          <figure><img src="img/ap-dolomiti-bagno.jpg" alt="Bagno con doccia"></figure>
         </section>
-
-        <footer class="btn-footer" aria-label="Ação rápida do Appartamento Dolomiti">
-          <a href="https://wa.me/message/INJIU4KWZ7DVH1" target="_blank" rel="noopener noreferrer">Prenota ora tramite WhatsApp</a>
-        </footer>
       </article>
+
+      <!-- Botão Único de Ação Final (WhatsApp) -->
+      <div class="action-container">
+        <a href="https://wa.me/message/INJIU4KWZ7DVH1" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M13.601 2.326A7.85 7.85 0 0 0 10.64 0H10.62a7.85 7.85 0 0 0-7.61 7.86c0 1.3.33 2.55.98 3.66l-1.05 3.82 3.92-1.03a7.86 7.86 0 0 0 3.74.96h.004a7.86 7.86 0 0 0 7.61-7.87 7.85 7.85 0 0 0-2.37-5.52zM10.64 12.833a6.51 6.51 0 0 1-3.37-.94l-.24-.14-2.5 1.25.5-2.43-.16-.25a6.5 6.5 0 0 1-1-3.53c0-3.61 2.94-6.54 6.54-6.54h.01c1.75 0 3.39.68 4.63 1.93a6.47 6.47 0 0 1 1.93 4.65c0 3.61-2.94 6.54-6.54 6.54m3.59-4.89c-.2-.1-.18-.33-.56-.53s-1.07-.53-1.24-.59-.3-.09-.42.09-.48.58-.6 1.1-.24.58-.44.48c-1-.5-1.69-.92-2.22-1.83-.15-.26.15-.24.44-.81.04-.08.02-.15-.01-.2s-.42-1.02-.57-1.39c-.15-.38-.3-.33-.42-.33h-.36c-.13 0-.33.05-.51.24a2.22 2.22 0 0 0-.69 1.66c0 1 .73 1.96.83 2.1s1.44 2.2 3.48 3.08c.49.21.87.33 1.17.43.5.16.95.14 1.31.08.4-.06 1.24-.51 1.41-1 .17-.5.17-.93.12-1-.05-.08-.2-.13-.41-.23"/>
+          </svg>
+          Preventivo su WhatsApp
+        </a>
+      </div>
+
     </div>
   </section>
 
-<!-- LIGHTBOX GLOBAL PARA TODAS AS GALERIAS -->
-<div class="gallery-lightbox" aria-hidden="true" inert>
-  <button class="lightbox-close" type="button" aria-label="Fechar galeria">&times;</button>
-  <button class="lightbox-prev" type="button" aria-label="Foto anterior">&#10094;</button>
-  <img src="" alt="">
-  <button class="lightbox-next" type="button" aria-label="Próxima foto">&#10095;</button>
-</div>
+  <!-- LIGHTBOX GLOBAL -->
+  <div class="gallery-lightbox" aria-hidden="true" inert>
+    <button class="lightbox-close" type="button" aria-label="Fechar galeria">&times;</button>
+    <button class="lightbox-prev" type="button" aria-label="Foto anterior">&#10094;</button>
+    <img src="" alt="">
+    <button class="lightbox-next" type="button" aria-label="Próxima foto">&#10095;</button>
+  </div>
+</main>
 
- <footer aria-label="Piè di pagina del sito">
-  <p><span id="year"></span>© 2026 Appartamenti Al Parco</p>
+
+
+    <footer class="site-footer">
+
+  <div class="footer-container">
+    
+    <div class="footer-section">
+      <h3>Appartamenti al Parco</h3>
+
+      <p class="footer-address">
+        Via Nazionale, 18<br>
+        Molveno (TN) Italia
+      </p>
+
+      <ul class="footer-list">
+        <li><a href="mailto:info@alparco.it">📧 Email:</a></li>
+        <li><a href="https://wa.me/message/INJIU4KWZ7DVH1">📞 WhatsApp</a></li>
+        <li><a href="https://www.google.com/maps?q=Via+Nazionale+18,+38018+Molveno&output=embed">📍 Apri su Google Maps</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      
+      <ul class="footer-list">
+        <li>
+           <a href="https://www.instagram.com/appartamentialparco/" class="insta-link">
+            <img src="img/instagram.webp" alt="Instagram" class="insta-icon">
+            </a>
+            
+          <a href="https://wa.me/message/INJIU4KWZ7DVH1" class="whats-link">
+               <img src="img/whatsapp.webp" alt="WhatsApp" class="whats-icon">
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-container">
+      <p>© 2026 Appartamenti Al Parco</p>
+    </div>
+  </div>
 </footer>
 <script src="script.js"></script>
 </body>
+</html>

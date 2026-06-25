@@ -1,130 +1,78 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contatti Appartamenti al Parco</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nome da Página — Appartamenti Al Parco</title>
+    <link rel="stylesheet" href="css/global.css">
 </head>
-<body class="page-contatti">
+<body>
+    <header>
+        <nav aria-label="Navigazione principale">
+            <a href="index.html" class="logo">
+                <img src="img/logo-transparente.webp" alt="Logo">
+            </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="appartamenti.html">Appartamenti</a></li>
+                <li><a href="servizi.html">Servizi</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- Header igual ao das outras páginas -->
-  <header>
-    <nav aria-label="Navigazione principale">
-      <a href="index.html#home" class="logo" aria-label="Home — Appartamenti Al Parco">
-        <img src="logo-transparente.webp" alt="Logo Appartamenti Al Parco">
-      </a>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="appartamenti.html">Appartamenti</a></li>
-        <li><a href="eventi.html">Servizi</a></li>
-        <li><a href="contatti.html" class="current">Contatti</a></li>
-      </ul>
-    </nav>
-  </header>
 <main>
-  <!------------------------------------- Seção Contatti  ------------------------------------->
   <section id="contatti" aria-labelledby="contatti-title">
-    <div class="container" style="padding-top: var(--space-5)">
+    <div class="contatti-wrapper">
 
-      <h1 id="contatti-title">Contatti:</h1>
-      <p>
+      <h2 id="contatti-title">Contatti:</h2>
+      <p class="contatti-subtitle">
         Hai domande o desideri verificare la disponibilità?<br>
         Scrivici: rispondiamo velocemente su WhatsApp o e-mail.
       </p>
 
-      <!-- Bloco com dados (endereço + links rápidos) -->
-      <div class="contatti-dati" style="margin-top: var(--space-2)">
-        <address>
-          <strong>Appartamenti al Parco</strong><br>
-          Via Nazionale 18, 38018 Molveno (TN), Italia
-        </address>
+      <div class="contact-grid">
+        
+        <form action="https://formspree.io/f/xbddyyzg" method="POST" class="contact-form">
+          <input type="hidden" name="_subject" value="Nuovo mensagem dal sito - Appartamenti al Parco">
+          <input type="hidden" name="_next" value="https://www.appartamentialparco.it/index.html#home">
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-        <ul class="contatti-rapidi">
-          <li>
-            <a href="mailto:appartamentialparco@gmail.com">
-             📧 Email: appartamentialparco@gmail.com
+          <div>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" autocomplete="name" required>
+          </div>
+
+          <div>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+
+          <div>
+            <label for="messaggio">Messaggio:</label>
+            <textarea id="messaggio" name="messaggio" rows="6" required></textarea>
+          </div>
+
+          <p class="form-note">
+            Inviando il messaggio accetti che i dati siano usati per rispondere alla tua richiesta.
+            Leggi la nostra 
+            <a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer">Informativa sulla Privacy</a>.
+          </p>
+
+          <button type="submit">Invia messaggio</button>
+        </form>
+
+        <div class="whatsapp-cta">
+          <div class="wa-content">
+            <h3>Assistenza Diretta</h3>
+            <p>Siamo online! Chatta con noi per una risposta immediata su disponibilità e prezzi.</p>
+            <a href="https://wa.me/message/INJIU4KWZ7DVH1" target="_blank" class="wa-button">
+              Chatta su WhatsApp
             </a>
-          </li>
-          <li>
-            <a href="https://wa.me/message/INJIU4KWZ7DVH1" target="_blank" rel="noopener noreferrer" aria-label="Apri chat su WhatsApp al numero +39 353 4915147">
-              📞 +39 353 4915147 (WhatsApp)
-            </a>
-          </li>
-          <li>
-            <a href="https://maps.google.com/?q=Via+Nazionale+18,+38018+Molveno" target="_blank" rel="noopener noreferrer">
-              📍 Apri su Google Maps
-            </a>
-          </li>
-        </ul>
-      </div>
+          </div>
+        </div>
 
-      <!--------------------------------------------Formulario --------------------->
-<form 
-  action="https://formspree.io/f/xbddyyzg" 
-  method="POST"
-  class="contact-form"
->
-  <!-- extras úteis -->
-  <input 
-    type="hidden" 
-    name="_subject" 
-    value="Nuovo messaggio dal sito - Appartamenti al Parco"
-  >
-
-  <!-- anti-spam (honeypot ufficiale Formspree) -->
-  <input 
-    type="text" 
-    name="_gotcha" 
-    style="display:none" 
-    tabindex="-1" 
-    autocomplete="off"
-  >
-
-  <div>
-    <label for="nome">Nome:</label>
-    <input 
-      type="text" 
-      id="nome" 
-      name="nome" 
-      autocomplete="name"
-      required
-    >
-  </div>
-
-  <div>
-    <label for="email">E-mail:</label>
-    <input 
-      type="email" 
-      id="email" 
-      name="email" 
-      autocomplete="email"
-      required
-    >
-  </div>
-
-  <div>
-    <label for="messaggio">Messaggio:</label>
-    <textarea 
-      id="messaggio" 
-      name="messaggio" 
-      rows="6"
-      required
-    ></textarea>
-  </div>
-
-  <p class="form-note">
-    Inviando il messaggio accetti che i dati siano usati per rispondere alla tua richiesta.
-    Leggi la nostra 
-    <a href="/privacy" target="_blank" rel="noopener noreferrer">Informativa sulla Privacy</a>.
-  </p>
-
-  <button type="submit">Invia messaggio</button>
-</form>
-
-      <!-- Mappa -->
-      <div class="contatti-mappa" style="margin-top: var(--space-3)">
+      </div> <div class="contatti-mappa">
         <iframe
           class="gmap"
           src="https://www.google.com/maps?q=Via+Nazionale+18,+38018+Molveno&output=embed"
@@ -136,8 +84,57 @@
     </div>
   </section>
 </main>
-  <footer aria-label="Site footer">
-  <p>© 2026 Appartamenti Al Parco</p>
+
+
+
+
+
+
+
+
+
+<footer class="site-footer">
+
+  <div class="footer-container">
+    
+    <div class="footer-section">
+      <h3>Appartamenti al Parco</h3>
+
+      <p class="footer-address">
+        Via Nazionale, 18<br>
+        Molveno (TN) Italia
+      </p>
+
+      <ul class="footer-list">
+        <li><a href="mailto:info@alparco.it">📧 Email:</a></li>
+        <li><a href="https://wa.me/message/INJIU4KWZ7DVH1">📞 WhatsApp</a></li>
+        <li><a href="https://www.google.com/maps?q=Via+Nazionale+18,+38018+Molveno&output=embed">📍 Apri su Google Maps</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      
+      <ul class="footer-list">
+        <li>
+             <a href="https://www.instagram.com/appartamentialparco/" class="insta-link">
+            <img src="img/instagram.webp" alt="Instagram" class="insta-icon">
+            </a>
+            
+          <a href="https://wa.me/message/INJIU4KWZ7DVH1" class="whats-link">
+               <img src="img/whatsapp.webp" alt="WhatsApp" class="whats-icon">
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-container">
+      <p>© 2026 Appartamenti Al Parco</p>
+    </div>
+  </div>
 </footer>
+<script src="script.js"></script>
 </body>
 </html>

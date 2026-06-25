@@ -1,149 +1,178 @@
-//---------------------------------------------
-// HERO: SLIDESHOW AUTOMÁTICO
-//---------------------------------------------
-function initHero() {
+/* ==========================================
+   JS GLOBAL - APPARTAMENTI AL PARCO
+   ========================================== */
+document.addEventListener("DOMContentLoaded", () => {
+    initHeroSlideshow();
+    initReviewsCarousel();
+    initGalleries(); // Inicializa os botões "Mostrare più foto" e o Lightbox
+});
+ 
+// ---------------------------------------------
+// 1. HERO: SLIDESHOW AUTOMÁTICO
+// ---------------------------------------------
+function initHeroSlideshow() {
     const slides = document.querySelectorAll(".hero-slides img");
-    if (!slides.length) return;
-
+    if (slides.length === 0) return;
+ 
     let currentIndex = 0;
-    const intervalTime = 5000;
-
-    function showSlide(index) {
-        slides.forEach(slide => slide.classList.remove("active"));
-        if (slides[index]) slides[index].classList.add("active");
-    }
-
-    showSlide(currentIndex);
+    const intervalTime = 5000; // Troca a cada 5 segundos
+ 
     setInterval(() => {
+        slides[currentIndex].classList.remove("active");
         currentIndex = (currentIndex + 1) % slides.length;
-        showSlide(currentIndex);
+        slides[currentIndex].classList.add("active");
     }, intervalTime);
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-    initHero();
-
-    //--- 1. ACORDEÃO (Com Sincronização Inicial) ---
-    const galleryButtons = document.querySelectorAll('.btn-gallery');
-    galleryButtons.forEach((button) => {
-        const gallery = document.getElementById(button.getAttribute('aria-controls'));
-        if (!gallery) return;
-
-        // SINCRONIZAÇÃO: Garante que o 'hidden' do HTML respeite o 'aria-expanded' inicial
-        const isExpanded = button.getAttribute('aria-expanded') === 'true';
-        gallery.hidden = !isExpanded;
-
-        button.addEventListener('click', () => {
-            const currentlyExpanded = button.getAttribute('aria-expanded') === 'true';
-            button.setAttribute('aria-expanded', String(!currentlyExpanded));
-            gallery.hidden = currentlyExpanded;
-        });
-    });
-
-   //--- 2. LIGHTBOX (Com Reset, Foco e Proteção de Navegação) ---
-const lightbox = document.querySelector('.gallery-lightbox');
-
-if (lightbox) {
-    const lightboxImg = lightbox.querySelector('img');
-    const btnPrev = lightbox.querySelector('.lightbox-prev');
-    const btnNext = lightbox.querySelector('.lightbox-next');
-    const btnClose = lightbox.querySelector('.lightbox-close');
-
-    const galleries = {};
-    let activeGalleryId = null;
-
-    document.querySelectorAll('.galleria').forEach((gallery) => {
-        const galleryId = gallery.id;
-        if (!galleryId) return;
-        const thumbs = Array.from(gallery.querySelectorAll('img'));
-        galleries[galleryId] = { thumbs, currentIndex: 0 };
-
-        thumbs.forEach((thumb, index) => {
-            thumb.style.cursor = 'pointer';
-            thumb.addEventListener('click', () => {
-                activeGalleryId = galleryId;
-                updateLightboxImage(index);
-                
-                // Abre o Lightbox
-                lightbox.classList.add('active');
-                lightbox.setAttribute('aria-hidden', 'false');
-                lightbox.removeAttribute('inert'); // Permite foco e interação
-                
-                // Move o foco para o botão de fechar (Acessibilidade)
-                btnClose?.focus();
-            });
-        });
-    });
-
-    function updateLightboxImage(index) {
-        if (!activeGalleryId || !galleries[activeGalleryId]) return;
-
-        const currentGallery = galleries[activeGalleryId];
-        const total = currentGallery.thumbs.length;
-
-        if (index < 0) index = total - 1;
-        if (index >= total) index = 0;
-
-        currentGallery.currentIndex = index;
-        const thumb = currentGallery.thumbs[index];
-        lightboxImg.src = thumb.dataset.full || thumb.src;
-        lightboxImg.alt = thumb.alt || '';
+ 
+// ---------------------------------------------
+// 2. RECENSIONI: CARROSEL DE AVALIAÇÕES
+// ---------------------------------------------
+function initReviewsCarousel() {
+    const reviews = document.querySelectorAll('.review-item');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+ 
+    // Proteção preventiva caso os botões não existam nessa página específica
+    if (!reviews.length || !nextBtn || !prevBtn) return;
+ 
+    let currentIndex = 0;
+ 
+    function showReview(index) {
+        reviews.forEach(review => review.classList.remove('active'));
+        reviews[index].classList.add('active');
     }
-
-    const closeLightbox = () => {
-        // Remove o foco do botão antes de esconder o elemento
-        if (document.activeElement instanceof HTMLElement) {
-            document.activeElement.blur();
-        }
-
-        lightbox.classList.remove('active');
-        lightbox.setAttribute('aria-hidden', 'true');
-        lightbox.setAttribute('inert', ''); // Bloqueia foco e interações
-        activeGalleryId = null; 
-    };
-
-    // Navegação com proteção contra cliques acidentais
-    btnPrev?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (activeGalleryId) updateLightboxImage(galleries[activeGalleryId].currentIndex - 1);
+ 
+    function updateButtonColors(btnToActive, btnToInactive) {
+        btnToActive.classList.add('active-btn');
+        btnToInactive.classList.remove('active-btn');
+    }
+ 
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % reviews.length;
+        showReview(currentIndex);
+        updateButtonColors(nextBtn, prevBtn);
     });
-
-    btnNext?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (activeGalleryId) updateLightboxImage(galleries[activeGalleryId].currentIndex + 1);
-    });
-
-    btnClose?.addEventListener('click', closeLightbox);
-    
-    // Fecha ao clicar no fundo
-    lightbox.addEventListener('click', (e) => { 
-        if (e.target === lightbox) closeLightbox(); 
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (!lightbox.classList.contains('active') || !activeGalleryId) return;
-        
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowRight') updateLightboxImage(galleries[activeGalleryId].currentIndex + 1);
-        if (e.key === 'ArrowLeft')  updateLightboxImage(galleries[activeGalleryId].currentIndex - 1);
+ 
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
+        showReview(currentIndex);
+        updateButtonColors(prevBtn, nextBtn);
     });
 }
-
-    //--- 3. ANIMAÇÕES DE SCROLL ---
-    const pqItems = document.querySelectorAll('#perchequi .pq-item.reveal');
-    if (pqItems.length > 0) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const idx = Array.from(pqItems).indexOf(entry.target);
-                    entry.target.style.transitionDelay = `${idx * 180}ms`;
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
+ 
+// ---------------------------------------------
+// 3. GALLERIA & LIGHTBOX (Botão "Mostrare più foto")
+// ---------------------------------------------
+function initGalleries() {
+    const galleryButtons = document.querySelectorAll('.btn-gallery');
+    const lightbox = document.querySelector('.gallery-lightbox');
+ 
+    if (!galleryButtons.length || !lightbox) return;
+ 
+    const lightboxImg = lightbox.querySelector('img');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    const prevBtn = lightbox.querySelector('.lightbox-prev');
+    const nextBtn = lightbox.querySelector('.lightbox-next');
+ 
+    let currentImagesArray = [];
+    let currentImgIndex = 0;
+    let openerButton = null; // [ACESSIBILIDADE] Guarda o botão que abriu o lightbox
+ 
+    // Ação do Botão "Mostrare più foto" -> Abre o Lightbox direto na primeira foto daquela galeria
+    galleryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetId = button.getAttribute('aria-controls');
+            const gallerySection = document.getElementById(targetId);
+ 
+            if (gallerySection) {
+                // Captura todas as imagens dentro da seção da galeria correspondente
+                const images = gallerySection.querySelectorAll('img');
+ 
+                if (images.length > 0) {
+                    currentImagesArray = Array.from(images).map(img => ({
+                        // [FIX] Usa data-src (URL real do lazy loader) com fallback para src
+                        // Necessário pois a galeria começa com hidden — o IntersectionObserver
+                        // nunca dispara, então img.src ainda é o placeholder SVG transparente.
+                        src: img.dataset.src || img.src,
+                        alt: img.alt
+                    }));
+ 
+                    // Atualiza o estado de acessibilidade do botão
+                    button.setAttribute('aria-expanded', 'true');
+ 
+                    // [ACESSIBILIDADE] Guarda o botão que abriu, para restaurar foco ao fechar
+                    openerButton = button;
+ 
+                    // Abre o lightbox na primeira imagem
+                    currentImgIndex = 0;
+                    openLightbox();
                 }
-            });
-        }, { threshold: 0.1 });
-        pqItems.forEach(el => observer.observe(el));
+            }
+        });
+    });
+ 
+    // Funções de manipulação do Lightbox
+    function openLightbox() {
+        updateLightboxImage();
+        lightbox.removeAttribute('aria-hidden');
+        lightbox.removeAttribute('inert');
+        lightbox.classList.add('active'); // Garante a transição visual caso use no CSS
+        document.body.style.overflow = 'hidden'; // Trava o scroll do fundo
+ 
+        // [ACESSIBILIDADE] Move o foco para o botão de fechar ao abrir o lightbox
+        closeBtn.focus();
     }
-});
-
-//--- MENU SANDUICHE ---
+ 
+    function closeLightbox() {
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightbox.setAttribute('inert', '');
+        lightbox.classList.remove('active');
+        document.body.style.overflow = ''; // Libera o scroll do fundo
+ 
+        // Reseta o estado dos botões aria-expanded
+        galleryButtons.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+ 
+        // [ACESSIBILIDADE] Restaura o foco para o botão que abriu o lightbox (WCAG 2.1 §2.4.3)
+        if (openerButton) {
+            openerButton.focus();
+            openerButton = null;
+        }
+    }
+ 
+    function updateLightboxImage() {
+        const imageData = currentImagesArray[currentImgIndex];
+        if (imageData) {
+            lightboxImg.src = imageData.src;
+            lightboxImg.alt = imageData.alt;
+        }
+    }
+ 
+    function nextImage() {
+        currentImgIndex = (currentImgIndex + 1) % currentImagesArray.length;
+        updateLightboxImage();
+    }
+ 
+    function prevImage() {
+        currentImgIndex = (currentImgIndex - 1 + currentImagesArray.length) % currentImagesArray.length;
+        updateLightboxImage();
+    }
+ 
+    // Event Listeners do Lightbox
+    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextImage(); });
+    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
+    closeBtn.addEventListener('click', closeLightbox);
+ 
+    // Fecha se clicar no fundo escuro (fora da imagem ou botões)
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+ 
+    // Atalhos de teclado (Acessibilidade)
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.getAttribute('aria-hidden') === 'true') return;
+ 
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
+    });
+}
