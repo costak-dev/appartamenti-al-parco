@@ -604,7 +604,7 @@ body.home {
     position: relative;
     padding-bottom: 0.5rem;
     font-weight: 500;
-    font-family: var(--fontplayfair);
+    font-family: var(--fontplayfair), serif;
 }
 
 #appartamenti-title::after {
@@ -834,8 +834,12 @@ body.home {
     right: 20px;
 }
 
-/* Responsividade para celulares */
+/* ==========================================================================
+   RESPONSIVIDADE (MOBILE UNIFICADA - 768px)
+   ========================================================================== */
 @media (max-width: 768px) {
+    
+    /* 1. ESTILOS DO LIGHTBOX (GALERIA) */
     .gallery-lightbox img {
         max-width: 95vw;
         max-height: 70vh;
@@ -859,11 +863,8 @@ body.home {
     .lightbox-next {
         right: 10px;
     }
-}
-/* ==========================================================================
-   RESPONSIVIDADE (MOBILE)
-   ========================================================================== */
-@media (max-width: 768px) {
+
+    /* 2. ESTILOS DOS CARDS DE APARTAMENTOS */
     .apt-card {
         padding: 1.5rem;
     }
@@ -886,6 +887,7 @@ body.home {
         justify-content: center;
     }
      
+    
     .page-appartamenti {
         padding-top: 95px; 
     }
