@@ -887,13 +887,11 @@ body.home {
     }
      
     .page-appartamenti {
-        padding-top: 130px; /* Um valor fixo maior para compensar o menu de duas linhas */
+        padding-top: 95px; 
     }
 }
 
-/* ==========================================================================
-   ESTILIZAÇÃO DA PÁGINA DE CONTATOS (CONTATTI)
-   ========================================================================== */
+/* ========================================================================== ESTILIZAÇÃO DA PÁGINA DE CONTATOS (CONTATTI) ========================================================================== */
 #contatti {
     /* Garante um recuo seguro no topo para não colar embaixo do header fixed */
     padding-top: calc(var(--header-h) + 1.5rem); 
